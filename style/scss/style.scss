@@ -1,1 +1,47 @@
-@import "_nullStyle"
+@import "_nullStyle";
+
+body{
+	background: rgba(118, 159, 205, 0.65) ; 
+	font-size: 24px;
+}
+
+.container {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 10px;
+
+}
+.btn {
+	background: #B9D7EA;
+	box-shadow: 2px 1px 2px 0px #463f3f ;
+	padding: 0 5px;
+
+
+}
+.btn--menu {
+	font-size: 24px;
+	margin: 0 10px 0 0;
+
+	
+}
+
+.header {
+margin: 50px 0;
+	&__items {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__menu {
+		margin-left: 40%;
+	}
+
+	&__settings {
+	}
+
+	&__ikon {
+		width: 31px;
+		height: 31px;
+	}
+}
