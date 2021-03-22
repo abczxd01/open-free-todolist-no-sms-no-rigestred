@@ -6,7 +6,7 @@
 
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 :focus, :active {
@@ -21,53 +21,16 @@ nav, footer, header, aside {
   display: block;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  font-size: 100%;
-  line-height: 1;
-  font-size: 14px;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-input, button, textarea {
-  font-family: inherit;
-}
-
-input::-ms-clear {
-  display: none;
-}
-
 button {
   cursor: pointer;
 }
 
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
-a, a:visited {
-  text-decoration: none;
-}
-
-a:hover {
+a {
   text-decoration: none;
 }
 
 ul li {
   list-style: none;
-}
-
-img {
-  vertical-align: top;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: 400;
 }
 
 body {
@@ -89,9 +52,10 @@ body {
   padding: 0 5px;
 }
 
-.btn--menu {
+.btn-menu {
   font-size: 24px;
   margin: 0 10px 0 0;
+  padding: 5px 10px;
 }
 
 .header {
@@ -114,4 +78,24 @@ body {
 .header__ikon {
   width: 31px;
   height: 31px;
+}
+
+.header__ikon:hover {
+  background: #ff0e0e;
+}
+
+.work__cliker {
+  padding: 10px 50px;
+  text-align: center;
+}
+
+.input__creatTask {
+  width: 782px;
+  height: 80px;
+  background: #B9D7EA;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 30px;
+  padding-left: 20px;
+  padding-right: 10px;
 }
