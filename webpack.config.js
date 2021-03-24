@@ -57,11 +57,10 @@ const scssLoaders = () => {
 module.exports = {
     resolve: {
         alias: {
-            blocks: path.resolve(__dirname, 'src/blocks'),
-            scss: path.resolve(__dirname, 'src/scss'),
+            scss: path.resolve(__dirname, 'src/sass'),
             fonts: path.resolve(__dirname, 'src/fonts'),
             pages: path.resolve(__dirname, 'src/pages'),
-            extensions: ['.pug', '.js']
+            extensions: ['js']
 
         }
     },
