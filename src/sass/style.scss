@@ -86,3 +86,24 @@ margin: 50px 0;
 	padding-right: 10px;
 
 }
+
+
+.sub-menu 
+{ 
+   display: none; 
+} 
+.main-item:focus ~ .sub-menu, 
+.main-item:active ~ .sub-menu, 
+.sub-menu:hover 
+{ 
+   display: block; 
+   
+} 
+
+
+.main-item{
+	text-decoration: none;
+	background: #000;
+	padding: 20px;
+	
+}
