@@ -16,6 +16,10 @@ body{
 	background: #B9D7EA;
 	box-shadow: 2px 1px 2px 0px #463f3f ;
 	padding: 0 5px;
+	transition: background 1s;
+	&:hover{
+		background: #8eb8d3;
+	}
 
 
 }
