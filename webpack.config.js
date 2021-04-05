@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-
+require('babel-polyfill')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -64,7 +64,8 @@ module.exports = {
 
         }
     },
-    entry: './src/index.js',
+    entry: ["babel-polyfill", "./src/index.js"],
+    // entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].[contenthash].js',
