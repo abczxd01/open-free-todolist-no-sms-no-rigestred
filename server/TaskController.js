@@ -1,11 +1,17 @@
 import Task from "./Task.js"
 
 class TaskController {
+    async options(req, res) {
+        res.header("Access-Control-Allow-Origin", "*")
+        res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
+        res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE")
+        res.end()
+    }
     async create(req, res) {
-        const completed = false
         try {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With");
+            const completed = false
+            res.header("Access-Control-Allow-Origin", "*")
+            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
             const { title, text, date } = req.body
             const task = await Task.create({ title, text, date, completed })
             res.json(task)
@@ -15,8 +21,8 @@ class TaskController {
     }
     async getAll(req, res) {
         try {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With");
+            res.header("Access-Control-Allow-Origin", "*")
+            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
             const tasks = await Task.find()
             return res.json(tasks)
         } catch (err) {
@@ -25,8 +31,8 @@ class TaskController {
     }
     async getOne(req, res) {
         try {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With");
+            res.header("Access-Control-Allow-Origin", "*")
+            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
             const { id } = req.params
             if (!id)
                 res.status(400).json({ message: 'Id не указан' })
@@ -38,8 +44,8 @@ class TaskController {
     }
     async update(req, res) {
         try {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With");
+            res.header("Access-Control-Allow-Origin", "*")
+            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
             const task = req.body
             if (!task._id)
                 res.status(400).json({ message: "Id не указан" })
@@ -51,8 +57,8 @@ class TaskController {
     }
     async delete(req, res) {
         try {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With");
+            res.header("Access-Control-Allow-Origin", "*")
+            res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
             const { id } = req.params
             if (!id)
                 res.status(400).json({ message: 'Id не указан' })
