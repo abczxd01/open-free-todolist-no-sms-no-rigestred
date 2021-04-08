@@ -1,3 +1,2 @@
-'use strict';
-import "./sass/style.scss"
-import "./EventListenersTasks"
+import './sass/style.scss';
+import './EventListenersTasks';
