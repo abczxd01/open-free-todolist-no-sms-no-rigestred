@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Open free todolist no sms-no rigestred</title>
+
 </head>
 
 <body class="light">
@@ -34,7 +35,7 @@
 			</div>
 
 		</div>
-		
+
 	</div>
 	<div class="filters">
 		<p>New</p>
@@ -42,14 +43,16 @@
 	</div>
 	<div class="createTaskBtn">
 		<button><svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M57.2917 0.625H7.70833C3.77708 0.625 0.625 3.8125 0.625 7.70833V57.2917C0.625 61.1875 3.77708 64.375 7.70833 64.375H57.2917C61.1875 64.375 64.375 61.1875 64.375 57.2917V7.70833C64.375 3.8125 61.1875 0.625 57.2917 0.625ZM50.2083 36.0417H36.0417V50.2083H28.9583V36.0417H14.7917V28.9583H28.9583V14.7917H36.0417V28.9583H50.2083V36.0417Z" fill="black"/>
+				<path
+					d="M57.2917 0.625H7.70833C3.77708 0.625 0.625 3.8125 0.625 7.70833V57.2917C0.625 61.1875 3.77708 64.375 7.70833 64.375H57.2917C61.1875 64.375 64.375 61.1875 64.375 57.2917V7.70833C64.375 3.8125 61.1875 0.625 57.2917 0.625ZM50.2083 36.0417H36.0417V50.2083H28.9583V36.0417H14.7917V28.9583H28.9583V14.7917H36.0417V28.9583H50.2083V36.0417Z"
+					fill="black" />
 			</svg>
-			</button>
+		</button>
 	</div>
 
 	<div class="task">
 		<div class="task__title">
-			<input type="text"  >
+			<input type="text">
 		</div>
 		<div class="task__timeData">
 			<div class="task__text">
@@ -60,7 +63,7 @@
 					<span class="month-picker" id="month-picker">February</span>
 					<div class="year-picker">
 						<span class="year-change" id="prev-year">
-							<pre></pre>
+							<pre><</pre>
 						</span>
 						<span id="year">2021</span>
 						<span class="year-change" id="next-year">
@@ -91,14 +94,29 @@
 				<div class="month-list"></div>
 			</div>
 		</div>
-
+		<div class="ViewfinishedTask">
+			<input type="button" class="ViewfinishedTask__btn">
+			<p>Задача</p>
+			<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M4.25 24.4375V29.75H9.5625L25.2308 14.0817L19.9183 8.76916L4.25 24.4375ZM29.3392 9.97333C29.8917 9.42083 29.8917 8.52833 29.3392 7.97583L26.0242 4.66083C25.4717 4.10833 24.5792 4.10833 24.0267 4.66083L21.4342 7.25333L26.7467 12.5658L29.3392 9.97333Z"
+					fill="white" />
+			</svg>
+			<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M20.6692 11.3333L17 15.0025L13.3309 11.3333L11.3334 13.3308L15.0025 17L11.3334 20.6692L13.3309 22.6667L17 18.9975L20.6692 22.6667L22.6667 20.6692L18.9975 17L22.6667 13.3308L20.6692 11.3333ZM17 2.83333C9.16587 2.83333 2.83337 9.16583 2.83337 17C2.83337 24.8342 9.16587 31.1667 17 31.1667C24.8342 31.1667 31.1667 24.8342 31.1667 17C31.1667 9.16583 24.8342 2.83333 17 2.83333ZM17 28.3333C10.7525 28.3333 5.66671 23.2475 5.66671 17C5.66671 10.7525 10.7525 5.66667 17 5.66667C23.2475 5.66667 28.3334 10.7525 28.3334 17C28.3334 23.2475 23.2475 28.3333 17 28.3333Z"
+					fill="white" />
+			</svg>
+			<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M23.5025 10.7383L14.1667 20.0742L9.08087 15.0025L7.08337 17L14.1667 24.0833L25.5 12.75L23.5025 10.7383ZM17 2.83333C9.18004 2.83333 2.83337 9.18 2.83337 17C2.83337 24.82 9.18004 31.1667 17 31.1667C24.82 31.1667 31.1667 24.82 31.1667 17C31.1667 9.18 24.82 2.83333 17 2.83333ZM17 28.3333C10.7384 28.3333 5.66671 23.2617 5.66671 17C5.66671 10.7383 10.7384 5.66667 17 5.66667C23.2617 5.66667 28.3334 10.7383 28.3334 17C28.3334 23.2617 23.2617 28.3333 17 28.3333Z" fill="white"/>
+				</svg>
+				
+		</div>
 	</div>
+	<script src="/src/calender.js"></script>
 
 
-	<div class="finishedTask">
-		
-	</div>
-	
+
 
 </body>
 

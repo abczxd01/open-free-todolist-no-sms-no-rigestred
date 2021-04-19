@@ -1,13 +1,17 @@
 @import "_nullStyle";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-html{
-	overflow: hidden;
+html {
+	
 }
 
 body {
 	font-family: "Roboto", sans-serif;
 }
+
+
+
+
 
 .inputSearch {
 	display: block;
@@ -40,7 +44,7 @@ body {
 		color: white;
 		font-weight: bold;
 		font-family: "Roboto", sans-serif;
-		&:hover{
+		&:hover {
 			background: rgb(58, 55, 55);
 		}
 	}
@@ -50,8 +54,9 @@ body {
 		border: 2px solid white;
 		margin: 10px -7px 10px;
 		padding: 0 5px;
-		&:hover{
-			background: rgb(58, 55, 55);}
+		&:hover {
+			background: rgb(58, 55, 55);
+		}
 	}
 
 	&__search {
@@ -59,8 +64,9 @@ body {
 		background-color: black;
 		padding: 0 5px;
 		margin: 10px 2px 10px;
-		&:hover{
-			background: rgb(58, 55, 55);}
+		&:hover {
+			background: rgb(58, 55, 55);
+		}
 	}
 }
 
@@ -75,7 +81,7 @@ body {
 		margin: 0 10px;
 		color: #000;
 		cursor: pointer;
-		&:hover{
+		&:hover {
 			font-weight: bold;
 		}
 	}
@@ -84,7 +90,6 @@ body {
 .createTaskBtn {
 	text-align: center;
 	margin-top: 20px;
-
 }
 
 .task {
@@ -129,7 +134,6 @@ body {
 	}
 }
 
-
 :root {
 	--dark-body: #000000;
 	--dark-main: #000000;
@@ -158,12 +162,11 @@ body {
 	--color-hover: var(--dark-hover);
 	--color-txt: var(--dark-text);
 	.calendar-days div.curr-date,
-.calendar-days div.curr-date:hover {
-	background-color: var(--dark-second);
-	color: var(--dark-body);
-	border-radius: 50%;
-}
-	
+	.calendar-days div.curr-date:hover {
+		background-color: var(--dark-second);
+		color: var(--dark-body);
+		border-radius: 50%;
+	}
 }
 
 .light {
@@ -186,7 +189,6 @@ body {
 	width: max-content;
 	background-color: var(--bg-main);
 	overflow: hidden;
-
 }
 
 .calendar-header {
@@ -233,7 +235,6 @@ body {
 	position: relative;
 	cursor: pointer;
 	animation: to-top 1s forwards;
-
 }
 
 .calendar-days div span {
@@ -430,5 +431,33 @@ body {
 	100% {
 		transform: translateY(0);
 		opacity: 1;
+	}
+}
+
+.ViewfinishedTask {
+	width: 100%;
+	max-width: 782px;
+	height: 100%;
+	max-height: 65px;
+	background-color: black;
+	color: white;
+	margin-top: 20px;
+	padding: 15px 8px;
+	cursor: pointer;
+	font-size: 24px;
+	display: flex;
+	p{
+		margin-left: 15px;
+		flex-basis: 85%;
+	}
+	svg{
+		
+		&:hover{
+			border: 2px solid white;
+		}
+		margin-right: 5px;
+	}
+	&__btn {
+	
 	}
 }
