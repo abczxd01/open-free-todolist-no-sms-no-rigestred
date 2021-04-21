@@ -6,3 +6,4 @@ server
 /.git
 webpack.config.js
 postcss.config.js
+config
