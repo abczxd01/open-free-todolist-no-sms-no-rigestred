@@ -12,6 +12,10 @@ a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 
 
-button{cursor: pointer;}
+button{
+	cursor: pointer;
+	background-color: transparent;
+	outline: none;
+}
 a {text-decoration: none;}
 ul li{list-style: none;}

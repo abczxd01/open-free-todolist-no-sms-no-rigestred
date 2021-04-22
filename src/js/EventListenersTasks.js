@@ -3,7 +3,7 @@ import {
   Task, addTask, reqTasks, createTask, createTasks, storageTasks,
 } from './TaskController';
 
-const inputCreateTask = document.querySelector('.input__creatTask');
+const inputCreateTask = document.querySelector('.create-task-button');
 
 addTask(true);
 
