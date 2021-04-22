@@ -16,6 +16,11 @@ body {
   height: 100px;
   display: flex;
   justify-content: center;
+  &__hide{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+  }
   &__items {
     display: inline-flex;
     justify-content: center;
