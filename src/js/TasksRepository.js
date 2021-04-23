@@ -44,12 +44,31 @@ export default class TasksRepository {
     }
   }
 
-  async update(id, data) {
+  async update(data) {
+    const reqData = {};
+    if (data.id !== undefined) {
+      reqData._id = data.id;
+    } else {
+      return new Error('id undefined');
+    }
+    if (data.date !== undefined) {
+      reqData.date = data.date;
+    }
+    if (data.title !== undefined) {
+      reqData.title = data.title;
+    }
+    if (data.text !== undefined) {
+      reqData.text = data.text;
+    }
+    if (data.completed !== undefined) {
+      reqData.completed = data.completed;
+    }
+    console.log(JSON.stringify(reqData));
     try {
-      const res = await fetch(`${this.SERVER_API}/${id}`, {
+      const res = await fetch(`${this.SERVER_API}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(reqData),
       });
       return res.json();
     } catch (err) {
