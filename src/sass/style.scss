@@ -16,7 +16,7 @@ body {
   height: 100px;
   display: flex;
   justify-content: center;
-  &__hide{
+  &__hide {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -79,15 +79,17 @@ body {
 
 .task {
   width: 778px;
-  background-color: black;
   color: white;
-  margin-top: 20px;
-  padding: 15px 8px;
-  font-size: 24px;
-  display: flex;
+  &__wrapper {
+    margin-top: 35px;
+    display: flex;
+    padding: 15px 8px;
+    background-color: black;
+  }
   &__text {
     margin-left: 15px;
     flex-basis: 85%;
+    font-size: 24px;
   }
   &__buttons {
     margin-right: 5px;
@@ -96,29 +98,32 @@ body {
       transform: scale(0.9, 0.9);
     }
   }
-  &__label{
+  &__label {
     position: relative;
     width: 30px;
     height: 33px;
   }
-  &__button{
-    &-input{
+  &__button {
+    &-input {
       appearance: none;
     }
-    &-checkbox{
+    &-checkbox {
       cursor: pointer;
       position: absolute;
       background-image: url("$img/checkbox-noCheked.svg");
       width: 29px;
       height: 29px;
     }
-    &-input:checked + &-checkbox{
+    &-input:checked + &-checkbox {
       background-image: url("$img/checkbox-checked.svg");
     }
   }
   &__menu {
     border: 5px solid black;
     max-width: 778px;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
 
     &__input-title {
       border-bottom: 5px solid black;
@@ -136,6 +141,7 @@ body {
     &__input-text {
       border-right: 5px solid black;
       textarea {
+        padding: 10px;
         height: 396px;
         width: 390px;
         font-size: 20px;
@@ -147,7 +153,11 @@ body {
     }
   }
 }
-
+.no-change{
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+}
 .calendar {
   height: max-content;
   width: max-content;

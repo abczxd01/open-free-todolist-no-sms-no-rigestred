@@ -28,61 +28,62 @@
       <p>Старые</p>
     </div>
     <div class="wrapper">
-      <div class="tasks">
-
-      </div>
       <div class="create-task-button">
         <button>
           <img src="./assets/images/add.svg" />
         </button>
       </div>
-      <div class="task">
-        <p class="task__text">Задача</p>
-        <button class="task__buttons task__button-edit">
-          <img src="./assets/images/edit.svg" />
-        </button>
-        <button class="task__buttons task__button-delete">
-          <img src="./assets/images/close.svg" />
-        </button>
-        <label class="task__buttons task__label">
-          <input class="task__button-input" type="checkbox" />
-          <span class="task__button-checkbox"></span>
-        </label>
-      </div>
-      <div class="task__menu">
-        <div class="task__menu__input-title">
-          <input type="text" />
-        </div>
-        <div class="task__menu__wrapper">
-          <div class="task__menu__input-text">
-            <textarea></textarea>
+      <div class="tasks">
+        <div class="task">
+          <div class="task__wrapper">
+            <p class="task__text">Задача</p>
+            <button class="task__buttons task__button-edit">
+              <img src="./assets/images/edit.svg" />
+            </button>
+            <button class="task__buttons task__button-delete">
+              <img src="./assets/images/delete.svg" />
+            </button>
+            <label class="task__buttons task__label">
+              <input class="task__button-input" type="checkbox" />
+              <span class="task__button-checkbox"></span>
+            </label>
           </div>
-          <div class="calendar">
-            <div class="calendar-header">
-              <span class="month-picker" id="month-picker">February</span>
-              <div class="year-picker">
-                <span class="year-change" id="prev-year">
-                  <pre> < </pre>
-                </span>
-                <span id="year">2021</span>
-                <span class="year-change" id="next-year">
-                  <pre> > </pre>
-                </span>
+          <div class="task__menu no-change">
+            <div class="task__menu__input-title">
+              <input type="text" />
+            </div>
+            <div class="task__menu__wrapper">
+              <div class="task__menu__input-text">
+                <textarea></textarea>
+              </div>
+              <div class="calendar">
+                <div class="calendar-header">
+                  <span class="month-picker" id="month-picker">February</span>
+                  <div class="year-picker">
+                    <span class="year-change" id="prev-year">
+                      <pre> < </pre>
+                    </span>
+                    <span id="year">2021</span>
+                    <span class="year-change" id="next-year">
+                      <pre> > </pre>
+                    </span>
+                  </div>
+                </div>
+                <div class="calendar-body">
+                  <div class="calendar-week-day">
+                    <div>Вск</div>
+                    <div>Пн</div>
+                    <div>Вт</div>
+                    <div>Ср</div>
+                    <div>Чт</div>
+                    <div>Пт</div>
+                    <div>Сб</div>
+                  </div>
+                  <div class="calendar-days"></div>
+                </div>
+                <div class="month-list"></div>
               </div>
             </div>
-            <div class="calendar-body">
-              <div class="calendar-week-day">
-                <div>Вск</div>
-                <div>Пн</div>
-                <div>Вт</div>
-                <div>Ср</div>
-                <div>Чт</div>
-                <div>Пт</div>
-                <div>Сб</div>
-              </div>
-              <div class="calendar-days"></div>
-            </div>
-            <div class="month-list"></div>
           </div>
         </div>
       </div>
