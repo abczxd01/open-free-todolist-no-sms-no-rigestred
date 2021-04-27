@@ -4,7 +4,6 @@ module.exports = {
   paths: {
     source: path.resolve(__dirname, '../src/'),
     output: path.resolve(__dirname, '../dist/'),
-    template: path.resolve(__dirname, '../src/template'),
   },
   server: {
     host: 'localhost',

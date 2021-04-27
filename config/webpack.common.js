@@ -8,14 +8,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const environment = require('./environment');
 
 
-const templateFiles = fs.readdirSync(environment.paths.template)
+const templateFiles = fs.readdirSync(environment.paths.source)
   .filter((file) => path.extname(file).toLowerCase() === '.html');
   
 const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin({
   inject: true,
   hash: false,
   filename: template,
-  template: path.resolve(environment.paths.template, template),
+  template: path.resolve(environment.paths.source, template),
 }));
 
 
@@ -36,16 +36,18 @@ const configureOutput = () => {
     assetModuleFilename: 'asset/images/[name].[hash][ext]',
   }
 }
-
+console.log(path.resolve(environment.paths.output, 'assets' , 'images'),);
 module.exports = {
   resolve:{
     alias:{
+      $js:path.resolve(environment.paths.source, 'js'),
       $sass: path.resolve(environment.paths.source, 'sass'),
       $img: path.resolve(environment.paths.source, 'images'),
+      
     }
   },
   entry: {
-    app: path.resolve(environment.paths.source, 'js', 'app.js'),
+    main: path.resolve(environment.paths.source, 'js', 'main.js'),
   },
 
   output: configureOutput(),
