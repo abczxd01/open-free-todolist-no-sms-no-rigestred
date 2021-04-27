@@ -8,11 +8,12 @@ customElements.define('task-menu', TaskMenu);
 export default class Task extends HTMLElement {
   constructor(data) {
     super();
-    this.id = data._id === undefined ? null : data._id;
-    this.text = data.text === undefined ? null : data.text;
-    this.title = data.title === undefined ? null : data.title;
-    this.date = data.date === undefined ? null : data.date;
-    this.completed = data.completed === undefined ? null : data.completed;
+    this.id = data.id;
+    this.text = data.text;
+    this.title = data.title;
+    this.date = data.date;
+    this.completed = data.completed;
+    this.data = data;
   }
 
   render() {
