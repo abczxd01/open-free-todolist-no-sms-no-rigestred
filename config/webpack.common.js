@@ -41,7 +41,7 @@ module.exports = {
   resolve:{
     alias:{
       $js:path.resolve(environment.paths.source, 'js'),
-      $sass: path.resolve(environment.paths.source, 'sass'),
+      $baseStyle: path.resolve(environment.paths.source, 'base-style'),
       $img: path.resolve(environment.paths.source, 'images'),
       
     }
