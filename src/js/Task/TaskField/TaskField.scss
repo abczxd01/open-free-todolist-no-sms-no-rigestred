@@ -1,0 +1,38 @@
+.task-field {
+    margin-top: 35px;
+    display: flex;
+    padding: 15px 8px;
+    background-color: black;
+    &__text {
+      margin-left: 15px;
+      flex-basis: 85%;
+      font-size: 24px;
+      color: white;
+    }
+    &__bth {
+      margin-right: 5px;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(0.9, 0.9);
+      }
+    }
+    &__checkbox{
+      position: relative;
+      width: 30px;
+      height: 33px;
+      input {
+        appearance: none;
+      }
+      span {
+        cursor: pointer;
+        position: absolute;
+        background-image: url("$img/checkbox-noCheked.svg");
+        width: 29px;
+        height: 29px;
+      }
+      input:checked + span {
+        background-image: url("$img/checkbox-checked.svg");
+      }
+    }
+  }
+  

@@ -1,9 +1,9 @@
-import '$sass/style.scss';
+import '$baseStyle/style.scss';
 import './ui';
 import './calender';
 
 import TasksRepository from './TasksRepository';
-import Task from './Task';
+import Task from './Task/Task';
 
 const tasksRepository = new TasksRepository();
 

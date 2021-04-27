@@ -1,4 +1,7 @@
-import TasksRepository from './TasksRepository';
+import TasksRepository from '$js/TasksRepository';
+import { TaskField } from './TaskField/TaskField';
+
+customElements.define('task-field', TaskField);
 
 const tasksRepository = new TasksRepository();
 
@@ -32,51 +35,12 @@ export default class Task extends HTMLElement {
       handleEvent(event) {
         if (event.type === 'click' && event.target instanceof HTMLImageElement) this.clickHandler(event);
         if (event.type === 'change' && event.path[1].className.includes('labe')) this.completeTask(event.path[3].id);
-        // console.log(event);
       },
     };
   }
 
   render() {
-    this.classList.add('task');
-
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('task__wrapper');
-
-    const text = document.createElement('p');
-    text.classList.add('task__text');
-
-    text.innerText = this.title === 'null' ? this.text : this.title;
-
-    const buttonEdit = document.createElement('button');
-    buttonEdit.classList = 'task__buttons task__button-edit';
-
-    const buttonDelete = document.createElement('button');
-    buttonDelete.classList = 'task__buttons task__button-delete';
-
-    const label = document.createElement('label');
-    label.classList = 'task__buttons task__label';
-
-    const buttonEditImg = document.createElement('img');
-    buttonEditImg.src = './assets/images/edit.svg';
-
-    const buttonDeleteImg = document.createElement('img');
-    buttonDeleteImg.src = './assets/images/delete.svg';
-
-    const buttonInput = document.createElement('input');
-    buttonInput.type = 'checkbox';
-    buttonInput.classList.add('task__button-input');
-    if (this.completed === true) buttonInput.setAttribute('checked', '');
-
-    const buttonCheckBox = document.createElement('span');
-    buttonCheckBox.classList.add('task__button-checkbox');
-
-    buttonEdit.append(buttonEditImg);
-    buttonDelete.append(buttonDeleteImg);
-    label.append(buttonInput, buttonCheckBox);
-
-    wrapper.append(text, buttonEdit, buttonDelete, label);
-    this.append(wrapper);
+    this.append(new TaskField(this.text, this.title, this.completed));
 
     const menu = document.createElement('div');
     menu.classList.add('task__menu');
