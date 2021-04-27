@@ -1,0 +1,35 @@
+.task-menu {
+  border: 5px solid black;
+  max-width: 778px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  top: -1px;
+
+  &__title {
+    border-bottom: 5px solid black;
+    input {
+      border: none;
+      background-color: transparent;
+      width: 768px;
+      height: 50px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  &__text {
+    border-right: 5px solid black;
+    textarea {
+      padding: 10px;
+      height: 396px;
+      width: 390px;
+      font-size: 20px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+}

@@ -1,9 +1,12 @@
 import TasksRepository from '$js/TasksRepository';
 import { TaskField } from './TaskField/TaskField';
+import { TaskMenu } from './TaskMenu/TaskMenu';
+import { TaskController } from './TaskController';
 
 customElements.define('task-field', TaskField);
 
 const tasksRepository = new TasksRepository();
+customElements.define('task-menu', TaskMenu);
 
 export default class Task extends HTMLElement {
   constructor(data) {
@@ -40,45 +43,8 @@ export default class Task extends HTMLElement {
   }
 
   render() {
-    this.append(new TaskField(this.text, this.title, this.completed));
-
-    const menu = document.createElement('div');
-    menu.classList.add('task__menu');
-
-    const title = document.createElement('div');
-    title.classList.add('task__menu__input-title');
-
-    const menuWrapper = document.createElement('div');
-    menuWrapper.classList.add('task__menu__wrapper');
-
-    const titleInput = document.createElement('input');
-    titleInput.type = 'text';
-    titleInput.value = this.title === 'null' ? '' : this.title;
-
-    const inputText = document.createElement('div');
-    inputText.classList.add('task__menu__input-text');
-
-    const inputTextArea = document.createElement('textarea');
-    inputTextArea.value = this.text === 'null' ? '' : this.text;
-
-    title.append(titleInput);
-    menuWrapper.append(inputText);
-    inputText.append(inputTextArea);
-
-    menu.append(title, menuWrapper);
-    this.append(menu);
-  }
-
-  addEventListeners() {
-    this.addEventListener('click', this.handler);
-    this.addEventListener('change', this.handler);
-    this.addEventListener('keyup', this.handler);
-  }
-
-  removeEventListeners() {
-    this.removeEventListener('click', this.handler);
-    this.removeEventListener('change', this.handler);
-    this.removeEventListener('keyup', this.handler);
+    this.append(new TaskField(this.data));
+    this.append(new TaskMenu(this.data));
   }
 
   connectedCallback() {
