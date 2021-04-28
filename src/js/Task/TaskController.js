@@ -1,6 +1,6 @@
-import TasksRepository from '$js/TasksRepository';
+import { TaskService } from './TaskService';
 
-const tasksRepository = new TasksRepository();
+const taskService = new TaskService();
 
 class TaskController {
   constructor(context, data) {
@@ -13,26 +13,38 @@ class TaskController {
 
     this.handler = {
       taskElement: this.taskElement,
-      deleteTask(id) {
-        tasksRepository.delete(id);
-        this.taskElement.remove();
-      },
-      completeTask(id) {
-        tasksRepository.update({ id, completed: true });
-      },
+
       showEditMenu() {
         const editMenu = this.taskElement.querySelector('.task-menu');
-        editMenu.style.position = 'relative';
-        editMenu.style.visibility = 'visible';
-        editMenu.style.opacity = 1;
+        editMenu.classList.toggle('task-menu__active');
       },
+
       clickHandler(event) {
         if (event.path[1].className.includes('edit')) this.showEditMenu();
-        if (event.path[1].className.includes('delete')) this.deleteTask(this.taskElement.id);
+        if (event.path[1].className.includes('delete')) {
+          this.taskElement.remove();
+          taskService.deleteTask(this.taskElement.id);
+        }
+      },
+      keybordHandler(event) {
+        if (event.path[1].className.includes('text')) {
+          taskService.updateTask({
+            id: this.taskElement.id,
+            text: event.srcElement.value,
+          });
+        } else if (event.path[1].className.includes('title')) {
+          taskService.updateTask({
+            id: this.taskElement.id,
+            title: event.srcElement.value,
+          });
+        }
       },
       handleEvent(event) {
         if (event.type === 'click' && event.target instanceof HTMLImageElement) this.clickHandler(event);
-        if (event.type === 'change' && event.path[1].className.includes('labe')) this.completeTask(event.path[3].id);
+        if (event.type === 'change' && event.path[1].className.includes('checkbox')) {
+          taskService.completeTask(this.taskElement.id);
+        }
+        if (event.type === 'keyup') this.keybordHandler(event);
       },
     };
   }
@@ -41,12 +53,6 @@ class TaskController {
     this.taskElement.addEventListener('click', this.handler);
     this.taskElement.addEventListener('change', this.handler);
     this.taskElement.addEventListener('keyup', this.handler);
-  }
-
-  removeEventListeners() {
-    this.taskElement.removeEventListener('click', this.handler);
-    this.taskElement.removeEventListener('change', this.handler);
-    this.taskElement.removeEventListener('keyup', this.handler);
   }
 }
 

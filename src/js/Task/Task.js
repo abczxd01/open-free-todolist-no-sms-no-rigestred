@@ -14,6 +14,7 @@ export default class Task extends HTMLElement {
     this.date = data.date;
     this.completed = data.completed;
     this.data = data;
+    this.controller = new TaskController(this, this.data);
   }
 
   render() {
@@ -22,9 +23,7 @@ export default class Task extends HTMLElement {
   }
 
   connectedCallback() {
-    new TaskController(this, this.data).addEventListeners();
+    this.controller.addEventListeners();
     this.render();
   }
-
-  // disconnectedCallback() {}
 }
