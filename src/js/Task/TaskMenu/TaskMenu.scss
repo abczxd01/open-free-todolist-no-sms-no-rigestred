@@ -1,11 +1,11 @@
 .task-menu {
   border: 5px solid black;
+  border-top: 0;
   max-width: 778px;
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  top: -1px;
-
+  display: none;
+  &__active{
+    display:block;
+  }
   &__title {
     border-bottom: 5px solid black;
     input {
@@ -26,6 +26,7 @@
       height: 396px;
       width: 390px;
       font-size: 20px;
+      resize: none;
     }
   }
 

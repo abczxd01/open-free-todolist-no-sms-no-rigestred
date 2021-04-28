@@ -63,7 +63,6 @@ export default class TasksRepository {
     if (data.completed !== undefined) {
       reqData.completed = data.completed;
     }
-    console.log(JSON.stringify(reqData));
     try {
       const res = await fetch(`${this.SERVER_API}`, {
         method: 'PUT',
