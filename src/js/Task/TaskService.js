@@ -3,6 +3,11 @@ import TasksRepository from '$js/TasksRepository';
 const tasksRepository = new TasksRepository();
 
 class TaskService {
+  constructor() {
+    this.updateTimer = null;
+    this.updateTimerDelay = 2000;
+  }
+
   deleteTask(id) {
     tasksRepository.delete(id);
   }
@@ -11,8 +16,15 @@ class TaskService {
     tasksRepository.update({ id, completed: true });
   }
 
-  updateTask(data) {
-    tasksRepository.update(data);
+  updateTask(data, useTimer) {
+    if (useTimer) {
+      clearTimeout(this.updateTimer);
+      this.updateTimer = setTimeout(() => {
+        tasksRepository.update(data);
+      }, this.updateTimerDelay);
+    } else {
+      tasksRepository.update(data);
+    }
   }
 }
 

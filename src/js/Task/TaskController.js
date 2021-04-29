@@ -26,25 +26,31 @@ class TaskController {
           taskService.deleteTask(this.taskElement.id);
         }
       },
+
       keybordHandler(event) {
         if (event.path[1].className.includes('text')) {
           taskService.updateTask({
             id: this.taskElement.id,
             text: event.srcElement.value,
-          });
+          }, true);
         } else if (event.path[1].className.includes('title')) {
           taskService.updateTask({
             id: this.taskElement.id,
             title: event.srcElement.value,
-          });
+          }, true);
         }
       },
+
       handleEvent(event) {
-        if (event.type === 'click' && event.target instanceof HTMLImageElement) this.clickHandler(event);
+        if (event.type === 'click' && event.target instanceof HTMLImageElement) {
+          this.clickHandler(event);
+        }
         if (event.type === 'change' && event.path[1].className.includes('checkbox')) {
           taskService.completeTask(this.taskElement.id);
         }
-        if (event.type === 'keyup') this.keybordHandler(event);
+        if (event.type === 'keyup') {
+          this.keybordHandler(event);
+        }
       },
     };
   }
