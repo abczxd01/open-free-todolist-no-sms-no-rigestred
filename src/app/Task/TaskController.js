@@ -1,8 +1,8 @@
-import { TaskService } from './TaskService';
+import TaskService from './TaskService';
 
 const taskService = new TaskService();
 
-class TaskController {
+export default class TaskController {
   constructor(context, data) {
     this.id = data.id;
     this.text = data.text;
@@ -61,5 +61,3 @@ class TaskController {
     this.taskElement.addEventListener('keyup', this.handler);
   }
 }
-
-export { TaskController };

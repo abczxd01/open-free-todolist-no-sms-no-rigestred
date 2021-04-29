@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 let headerSearchInput = null;
 const headerWrapper = document.querySelector('.header__wrapper');
 const headerButtons = document.querySelectorAll('.header__button');

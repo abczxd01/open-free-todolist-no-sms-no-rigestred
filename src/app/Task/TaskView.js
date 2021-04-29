@@ -1,25 +1,47 @@
 import TasksRepository from '$app/TasksRepository';
 import Task from './Task';
+import TaskMenu from './TaskMenu/TaskMenu';
 
 const tasksRepository = new TasksRepository();
 
 customElements.define('task-element', Task);
 
 const tasks = document.querySelector('.tasks');
+const createTaskBth = document.querySelector('.create-task-button');
 
-function TasksView() {
+function ViewAllTask() {
   tasksRepository.getAll().then((res) => {
     res.forEach((element) => {
-      const elementValidation = {
-        id: element._id ? element._id : null,
-        text: element.text ? element.text : null,
-        title: element.title ? element.title : null,
-        date: element.date ? element.date : null,
-        completed: element.completed ? element.completed : null,
-      };
-      tasks.append(new Task(elementValidation));
+      tasks.append(new Task(element));
     });
   });
 }
 
-export { TasksView };
+let timerCreate = null;
+const timerCreateDelay = 5000;
+
+function ViewTaskMenu() {
+  const taskMenu = new TaskMenu();
+  createTaskBth.after(taskMenu);
+  taskMenu.firstChild.style.display = 'block';
+  taskMenu.style.borderTop = '5px solid black';
+  taskMenu.style.marginTop = '10px';
+  taskMenu.addEventListener('keyup', (event) => {
+    clearTimeout(timerCreate);
+    timerCreate = setTimeout(() => {
+      tasksRepository.create({
+        title: taskMenu.querySelector('input').value,
+        text: taskMenu.querySelector('textarea').value,
+      }).then((res) => {
+        taskMenu.remove();
+        const id = res._id;
+        delete res._id;
+        delete res.__v;
+        res.id = id;
+        tasks.append(new Task(res));
+      });
+    }, timerCreateDelay);
+  });
+}
+
+export { ViewAllTask, ViewTaskMenu };

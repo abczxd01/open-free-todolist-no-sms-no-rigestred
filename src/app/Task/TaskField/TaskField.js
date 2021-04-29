@@ -1,6 +1,6 @@
 import './TaskField.scss';
 
-class TaskField extends HTMLElement {
+export default class TaskField extends HTMLElement {
   constructor(data) {
     super();
     this.title = data.title;
@@ -46,4 +46,3 @@ class TaskField extends HTMLElement {
   }
 }
 
-export { TaskField };

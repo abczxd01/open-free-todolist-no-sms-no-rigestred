@@ -1,11 +1,13 @@
 import './TaskMenu.scss';
 
-class TaskMenu extends HTMLElement {
+export default class TaskMenu extends HTMLElement {
   constructor(data) {
     super();
-    this.title = data.title;
-    this.text = data.text;
-    this.date = data.date;
+    if (data) {
+      this.title = data.title;
+      this.text = data.text;
+      this.date = data.date;
+    }
   }
 
   render() {
@@ -20,13 +22,16 @@ class TaskMenu extends HTMLElement {
 
     const titleInput = document.createElement('input');
     titleInput.type = 'text';
-    titleInput.value = this.title === 'null' ? '' : this.title;
 
     const text = document.createElement('div');
     text.classList.add('task-menu__text');
 
     const inputTextArea = document.createElement('textarea');
-    inputTextArea.value = this.text === 'null' ? '' : this.text;
+
+    if (this.title || this.text) {
+      titleInput.value = this.title === 'null' ? '' : this.title;
+      inputTextArea.value = this.text === 'null' ? '' : this.text;
+    }
 
     title.append(titleInput);
     menuWrapper.append(text);
@@ -40,5 +45,3 @@ class TaskMenu extends HTMLElement {
     this.render();
   }
 }
-
-export { TaskMenu };

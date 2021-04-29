@@ -1,6 +1,6 @@
-import { TaskField } from './TaskField/TaskField';
-import { TaskMenu } from './TaskMenu/TaskMenu';
-import { TaskController } from './TaskController';
+import TaskField from './TaskField/TaskField';
+import TaskMenu from './TaskMenu/TaskMenu';
+import TaskController from './TaskController';
 
 customElements.define('task-field', TaskField);
 customElements.define('task-menu', TaskMenu);

@@ -2,10 +2,14 @@ import TasksRepository from '$app/TasksRepository';
 
 const tasksRepository = new TasksRepository();
 
-class TaskService {
+export default class TaskService {
   constructor() {
     this.updateTimer = null;
     this.updateTimerDelay = 2000;
+  }
+
+  createTask(data) {
+    tasksRepository.create(data);
   }
 
   deleteTask(id) {

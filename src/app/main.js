@@ -1,7 +1,13 @@
 import '$baseStyle/style.scss';
-import './ui';
-import './calendar';
+import './header';
+// import './calendar';
 
-import { TasksView } from './Task/TaskView';
+import { ViewAllTask, ViewTaskMenu } from './Task/TaskView';
 
-TasksView();
+ViewAllTask();
+
+const createTaskBth = document.querySelector('.create-task-button');
+
+createTaskBth.addEventListener('click', (event) => {
+  ViewTaskMenu();
+});
