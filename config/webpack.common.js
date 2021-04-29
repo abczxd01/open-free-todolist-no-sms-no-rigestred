@@ -40,14 +40,14 @@ console.log(path.resolve(environment.paths.output, 'assets' , 'images'),);
 module.exports = {
   resolve:{
     alias:{
-      $js:path.resolve(environment.paths.source, 'js'),
+      $app:path.resolve(environment.paths.source, 'app'),
       $baseStyle: path.resolve(environment.paths.source, 'base-style'),
       $img: path.resolve(environment.paths.source, 'images'),
       
     }
   },
   entry: {
-    main: path.resolve(environment.paths.source, 'js', 'main.js'),
+    main: path.resolve(environment.paths.source, 'app', 'main.js'),
   },
 
   output: configureOutput(),

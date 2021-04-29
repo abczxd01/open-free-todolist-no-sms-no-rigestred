@@ -1,4 +1,4 @@
-import TasksRepository from '$js/TasksRepository';
+import TasksRepository from '$app/TasksRepository';
 
 const tasksRepository = new TasksRepository();
 
