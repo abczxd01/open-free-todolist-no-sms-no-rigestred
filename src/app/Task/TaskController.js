@@ -1,6 +1,6 @@
-import TaskService from './TaskService';
+import TasksRepository from '$app/TasksRepository';
 
-const taskService = new TaskService();
+const tasksRepository = new TasksRepository();
 
 export default class TaskController {
   constructor(context, data) {
@@ -13,7 +13,7 @@ export default class TaskController {
 
     this.handler = {
       taskElement: this.taskElement,
-
+      timer: null,
       showEditMenu() {
         const editMenu = this.taskElement.querySelector('.task-menu');
         editMenu.classList.toggle('task-menu__active');
@@ -23,21 +23,27 @@ export default class TaskController {
         if (event.path[1].className.includes('edit')) this.showEditMenu();
         if (event.path[1].className.includes('delete')) {
           this.taskElement.remove();
-          taskService.deleteTask(this.taskElement.id);
+          tasksRepository.delete(this.taskElement.id);
         }
       },
 
       keybordHandler(event) {
         if (event.path[1].className.includes('text')) {
-          taskService.updateTask({
-            id: this.taskElement.id,
-            text: event.srcElement.value,
-          }, true);
+          clearTimeout(this.timer);
+          this.timer = setTimeout(() => {
+            tasksRepository.update({
+              id: this.taskElement.id,
+              text: event.srcElement.value,
+            });
+          }, 2000);
         } else if (event.path[1].className.includes('title')) {
-          taskService.updateTask({
-            id: this.taskElement.id,
-            title: event.srcElement.value,
-          }, true);
+          clearTimeout(this.timer);
+          this.timer = setTimeout(() => {
+            tasksRepository.update({
+              id: this.taskElement.id,
+              title: event.srcElement.value,
+            });
+          }, 2000);
         }
       },
 
@@ -46,7 +52,10 @@ export default class TaskController {
           this.clickHandler(event);
         }
         if (event.type === 'change' && event.path[1].className.includes('checkbox')) {
-          taskService.completeTask(this.taskElement.id);
+          tasksRepository.update({
+            id: this.taskElement.id,
+            completed: true,
+          });
         }
         if (event.type === 'keyup') {
           this.keybordHandler(event);
