@@ -1,10 +1,13 @@
+import route from './router';
+
 let headerSearchInput = null;
 const headerWrapper = document.querySelector('.header__wrapper');
-const headerButtons = document.querySelectorAll('.header__button');
+const headerItems = document.querySelectorAll('.header__item');
+const headerLinks = document.querySelectorAll('.header__link');
 
 function headerSearch(event) {
   if (event.code.toLowerCase() === 'enter') {
-    headerButtons.forEach((element) => {
+    headerItems.forEach((element) => {
       if (!element.matches('.header__search')) element.classList.toggle('header__hide');
     });
     headerSearchInput.remove();
@@ -17,7 +20,7 @@ function searchGeneration() {
   input.setAttribute('type', 'text');
   input.classList.add('header__search-input');
   input.style.width = `${headerWrapper.offsetWidth - 66}px`;
-  headerButtons.forEach((element) => {
+  headerItems.forEach((element) => {
     if (!element.matches('.header__search')) element.classList.toggle('header__hide');
   });
   headerSearchInput = document.querySelector('.header__search-input');
@@ -32,3 +35,9 @@ function searchGeneration() {
 }
 
 document.querySelector('.header__search').addEventListener('click', searchGeneration);
+
+headerLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    route(event.target.hash);
+  });
+});

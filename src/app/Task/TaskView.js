@@ -11,6 +11,9 @@ const createTaskBth = document.querySelector('.create-task-button');
 
 function ViewAllTask(filter) {
   if (filter) {
+    document.querySelectorAll('task-element').forEach((task) => {
+      task.remove();
+    });
     tasksRepository.getAll()
       .then((res) => {
         res.forEach((element) => {
