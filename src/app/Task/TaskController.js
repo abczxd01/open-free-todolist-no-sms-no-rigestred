@@ -28,30 +28,27 @@ export default class TaskController {
       },
 
       keybordHandler(event) {
-        if (event.path[1].className.includes('text')) {
-          clearTimeout(this.timer);
-          this.timer = setTimeout(() => {
-            tasksRepository.update({
-              id: this.taskElement.id,
-              text: event.srcElement.value,
-            });
-          }, 2000);
-        } else if (event.path[1].className.includes('title')) {
-          clearTimeout(this.timer);
-          this.timer = setTimeout(() => {
-            tasksRepository.update({
-              id: this.taskElement.id,
-              title: event.srcElement.value,
-            });
-          }, 2000);
-        }
+        const isTitle = event.target.className.includes('text');
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          tasksRepository.update({
+            id: this.taskElement.id,
+            [isTitle ? 'title' : 'text']: event.srcElement.value,
+          });
+        }, 2000);
       },
 
       handleEvent(event) {
-        if (event.type === 'click' && event.target instanceof HTMLImageElement) {
+        if (
+          event.type === 'click'
+          && event.target instanceof HTMLImageElement
+        ) {
           this.clickHandler(event);
         }
-        if (event.type === 'change' && event.path[1].className.includes('checkbox')) {
+        if (
+          event.type === 'change'
+          && event.path[1].className.includes('checkbox')
+        ) {
           tasksRepository.update({
             id: this.taskElement.id,
             completed: true,

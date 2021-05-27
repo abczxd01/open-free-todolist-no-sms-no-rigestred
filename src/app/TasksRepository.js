@@ -5,15 +5,15 @@ export default class TasksRepository {
 
   async validationData(data, array) {
     if (array) {
-      return data.map((value) => {
+      return data.map(value => {
         const id = value._id;
         delete value.__v;
         delete value._id;
         value.id = id;
-        value.text = value.text ? value.text : null;
-        value.title = value.title ? value.title : null;
-        value.date = value.date ? value.date : null;
-        value.completed = value.completed ? value.completed : null;
+        value.text = value.text ?? null;
+        value.title = value.title ?? null;
+        value.date = value.date ?? null;
+        value.completed = value.completed ?? null;
         return value;
       });
     }
@@ -21,10 +21,10 @@ export default class TasksRepository {
     delete data.__v;
     delete data._id;
     data.id = id;
-    data.text = data.text ? data.text : null;
-    data.title = data.title ? data.title : null;
-    data.date = data.date ? data.date : null;
-    data.completed = data.completed ? data.completed : null;
+    data.text = data.text ?? null;
+    data.title = data.title ?? null;
+    data.date = data.date ?? null;
+    data.completed = data.completed ?? null;
     return data;
   }
 
