@@ -1,13 +1,18 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends":["airbnb/base"],
-    "rules": {
-        "no-console":"off",
-        "no-plusplus":"off",
-        "indent": ["error",2]
-    }
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["airbnb/base"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "no-console": 1,
+    "no-plusplus": "off",
+    "indent": ["error", 2]
+  }
 }

@@ -26,7 +26,7 @@ module.exports = merge(baseConfig, {
   devtool: 'eval-source-map',
 
   mode: 'development',
-  
+
   watchOptions: {
     aggregateTimeout: 300,
     poll: 300,
@@ -39,14 +39,9 @@ module.exports = merge(baseConfig, {
     rules: [
       {
         test: /\.(css|sass|scss)$/,
-        use: [
-          'style-loader',
-          ...cssLoaders
-        ],
+        use: ['style-loader', ...cssLoaders],
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ]
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 });
