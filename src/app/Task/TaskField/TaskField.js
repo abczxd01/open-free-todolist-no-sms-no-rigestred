@@ -12,9 +12,9 @@ export default class TaskField extends HTMLElement {
     const field = document.createElement('div');
     field.classList.add('task-field');
 
-    const fieldText = document.createElement('p');
+    const fieldText = document.createElement('input');
     fieldText.classList.add('task-field__text');
-    fieldText.innerText = this.title === 'null' ? this.text : this.title;
+    fieldText.value = this.title ?? this.text;
 
     const iconEdit = document.createElement('img');
     iconEdit.src = './assets/images/edit.svg';
@@ -45,4 +45,3 @@ export default class TaskField extends HTMLElement {
     this.render();
   }
 }
-
