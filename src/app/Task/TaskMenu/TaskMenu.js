@@ -1,47 +1,46 @@
 import './TaskMenu.scss';
 
 export default class TaskMenu extends HTMLElement {
-  constructor(data) {
+  constructor(data, renderType) {
     super();
+    this.renderType = renderType;
     if (data) {
-      this.title = data.title;
       this.text = data.text;
-      this.date = data.date;
     }
   }
 
-  render() {
-    const menu = document.createElement('div');
-    menu.classList.add('task-menu');
-
-    const title = document.createElement('div');
-    title.classList.add('task-menu__title');
-
-    const menuWrapper = document.createElement('div');
-    menuWrapper.classList.add('task-menu__wrapper');
+  renderCreateMenu() {
+    this.classList.add('task-menu_create');
 
     const titleInput = document.createElement('input');
     titleInput.type = 'text';
+    titleInput.setAttribute('placeholder', 'Заголовок');
+
+    const inputTextArea = document.createElement('textarea');
+    inputTextArea.setAttribute('placeholder', 'Описание задачи');
+
+    this.append(titleInput, inputTextArea);
+  }
+
+  renderMenu() {
+    const menu = document.createElement('div');
+    menu.classList.add('task-menu');
 
     const text = document.createElement('div');
     text.classList.add('task-menu__text');
 
     const inputTextArea = document.createElement('textarea');
 
-    if (this.title || this.text) {
-      titleInput.value = this.title === 'null' ? '' : this.title;
-      inputTextArea.value = this.text === 'null' ? '' : this.text;
-    }
+    inputTextArea.value = this.text ?? '';
 
-    title.append(titleInput);
-    menuWrapper.append(text);
     text.append(inputTextArea);
 
-    menu.append(title, menuWrapper);
+    menu.append(text);
     this.append(menu);
   }
 
   connectedCallback() {
-    this.render();
+    if (this.renderType === 'createMenu') this.renderCreateMenu();
+    else this.renderMenu();
   }
 }

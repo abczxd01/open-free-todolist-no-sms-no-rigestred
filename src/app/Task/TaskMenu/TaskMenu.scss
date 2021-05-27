@@ -1,36 +1,43 @@
 .task-menu {
   border: 5px solid black;
-  border-top: 0;
-  max-width: 778px;
   display: none;
-  &__active{
-    display:block;
-  }
-  &__title {
-    border-bottom: 5px solid black;
+
+  &_create {
+    border: 5px solid black;
+    max-width: 700px;
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
     input {
-      border: none;
-      background-color: transparent;
-      width: 768px;
-      height: 50px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 600;
+      border-bottom: 5px black solid;
+      display: block;
+      height: 45px;
+      padding: 10px;
+      font-size: 20px;
+      width: inherit;
     }
+    textarea {
+      resize: none;
+      display: block;
+      padding: 10px;
+      height: 290px;
+      width: inherit;
+      font-size: 16px;
+    }
+  }
+
+  &__active {
+    display: block;
   }
 
   &__text {
-    border-right: 5px solid black;
     textarea {
       padding: 10px;
-      height: 396px;
-      width: 390px;
+      height: 296px;
+
       font-size: 20px;
       resize: none;
     }
-  }
-
-  &__wrapper {
-    display: flex;
   }
 }
