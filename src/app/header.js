@@ -1,4 +1,5 @@
 import route from './router';
+import searchTask from './searchTask';
 
 let headerSearchInput = null;
 const headerWrapper = document.querySelector('.header__wrapper');
@@ -7,8 +8,10 @@ const headerLinks = document.querySelectorAll('.header__link');
 
 function headerSearch(event) {
   if (event.code.toLowerCase() === 'enter') {
-    headerItems.forEach((element) => {
-      if (!element.matches('.header__search')) element.classList.toggle('header__hide');
+    searchTask(event.target.value);
+    headerItems.forEach(element => {
+      if (!element.matches('.header__search'))
+        element.classList.toggle('header__hide');
     });
     headerSearchInput.remove();
     headerSearchInput.removeEventListener('keyup', headerSearch);
@@ -20,8 +23,9 @@ function searchGeneration() {
   input.setAttribute('type', 'text');
   input.classList.add('header__search-input');
   input.style.width = `${headerWrapper.offsetWidth - 66}px`;
-  headerItems.forEach((element) => {
-    if (!element.matches('.header__search')) element.classList.toggle('header__hide');
+  headerItems.forEach(element => {
+    if (!element.matches('.header__search'))
+      element.classList.toggle('header__hide');
   });
   headerSearchInput = document.querySelector('.header__search-input');
   if (headerSearchInput === null) {
@@ -34,10 +38,12 @@ function searchGeneration() {
   }
 }
 
-document.querySelector('.header__search').addEventListener('click', searchGeneration);
+document
+  .querySelector('.header__search')
+  .addEventListener('click', searchGeneration);
 
-headerLinks.forEach((link) => {
-  link.addEventListener('click', (event) => {
+headerLinks.forEach(link => {
+  link.addEventListener('click', event => {
     route(event.target.hash);
   });
 });
