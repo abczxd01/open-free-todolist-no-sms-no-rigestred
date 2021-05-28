@@ -19,11 +19,15 @@ export default class TaskMenu extends HTMLElement {
     const inputTextArea = document.createElement('textarea');
     inputTextArea.setAttribute('placeholder', 'Описание задачи');
 
-    this.append(titleInput, inputTextArea);
+    const saveButton = document.createElement('button');
+    saveButton.innerText = 'Save';
+
+    this.append(titleInput, inputTextArea, saveButton);
   }
 
   renderMenu() {
     const menu = document.createElement('div');
+    menu.setAttribute('hidden', '');
     menu.classList.add('task-menu');
 
     const text = document.createElement('div');
