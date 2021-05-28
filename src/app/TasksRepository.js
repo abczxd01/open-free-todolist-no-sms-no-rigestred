@@ -12,7 +12,6 @@ export default class TasksRepository {
         value.id = id;
         value.text = value.text ?? null;
         value.title = value.title ?? null;
-        value.date = value.date ?? null;
         value.completed = value.completed ?? null;
         return value;
       });
@@ -23,16 +22,12 @@ export default class TasksRepository {
     data.id = id;
     data.text = data.text ?? null;
     data.title = data.title ?? null;
-    data.date = data.date ?? null;
     data.completed = data.completed ?? null;
     return data;
   }
 
   async create(data) {
     const reqData = {};
-    if (data.date !== undefined) {
-      reqData.date = data.date;
-    }
     if (data.title !== undefined) {
       reqData.title = data.title;
     }
@@ -77,9 +72,6 @@ export default class TasksRepository {
       reqData._id = data.id;
     } else {
       throw new Error('id undefined');
-    }
-    if (data.date !== undefined) {
-      reqData.date = data.date;
     }
     if (data.title !== undefined) {
       reqData.title = data.title;

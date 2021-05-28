@@ -11,7 +11,6 @@ export default class Task extends HTMLElement {
     this.id = data.id;
     this.text = data.text;
     this.title = data.title;
-    this.date = data.date;
     this.completed = data.completed;
     this.data = data;
     this.controller = new TaskController(this, this.data);
