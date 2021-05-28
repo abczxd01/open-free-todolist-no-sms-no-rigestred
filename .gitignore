@@ -4,3 +4,4 @@ dist
 workspace.code-workspace
 /.vscode
 .vscode
+/server/public
