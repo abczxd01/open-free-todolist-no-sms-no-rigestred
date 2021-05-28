@@ -27,11 +27,10 @@ export default class TasksRepository {
   }
 
   async create(data) {
-    const reqData = {};
-    if (data.title !== undefined) {
-      reqData.title = data.title;
-    }
-    if (data.text !== undefined) {
+    const reqData = {
+      title: data.title,
+    };
+    if (data.text) {
       reqData.text = data.text;
     }
     try {
@@ -73,10 +72,10 @@ export default class TasksRepository {
     } else {
       throw new Error('id undefined');
     }
-    if (data.title !== undefined) {
+    if (data.title) {
       reqData.title = data.title;
     }
-    if (data.text !== undefined) {
+    if (data.text) {
       reqData.text = data.text;
     }
     if (data.completed !== undefined) {

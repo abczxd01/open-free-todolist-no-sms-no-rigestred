@@ -22,32 +22,33 @@ function ViewAllTask(filter) {
   } else {
     tasksRepository.getAll().then(res => {
       res.forEach(element => {
-        taskList.append(new Task(element));
+        const task = new Task(element);
+        if (!task.completed) {
+          taskList.append(task);
+        }
       });
     });
   }
 }
 
-let timerCreate = null;
-const timerCreateDelay = 5000;
-
 function ViewTaskMenu() {
   const taskMenu = new TaskMenu(null, 'createMenu');
   createTaskBth.after(taskMenu);
 
-  taskMenu.addEventListener('keyup', () => {
-    clearTimeout(timerCreate);
-    timerCreate = setTimeout(() => {
-      tasksRepository
-        .create({
-          title: taskMenu.querySelector('input').value,
-          text: taskMenu.querySelector('textarea').value,
-        })
-        .then(res => {
-          taskMenu.remove();
-          taskList.append(new Task(res));
-        });
-    }, timerCreateDelay);
+  taskMenu.addEventListener('click', event => {
+    if (event.target.tagName === 'BUTTON') {
+      const title = taskMenu.querySelector('input').value;
+      const text = taskMenu.querySelector('textarea').value;
+      if (!title && !text) return;
+      if (!title) return;
+      const reqBody = { title };
+      if (text) reqBody.text = text;
+
+      tasksRepository.create(reqBody).then(res => {
+        taskMenu.remove();
+        taskList.append(new Task(res));
+      });
+    }
   });
 }
 

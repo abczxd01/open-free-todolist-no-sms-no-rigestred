@@ -16,7 +16,11 @@ export default class TaskController {
       timer: null,
       showEditMenu() {
         const editMenu = this.taskElement.querySelector('.task-menu');
-        editMenu.classList.toggle('task-menu__active');
+        if (editMenu.hasAttribute('hidden')) {
+          editMenu.removeAttribute('hidden');
+        } else {
+          editMenu.setAttribute('hidden', '');
+        }
       },
 
       clickHandler(event) {
@@ -27,14 +31,13 @@ export default class TaskController {
         }
       },
 
-      keybordHandler(event) {
-        const isTitle = event.target.className.includes('text');
+      keybordHandler() {
+        const { id } = this.taskElement;
+        const title = this.taskElement.querySelector('input').value;
+        const text = this.taskElement.querySelector('textarea').value;
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
-          tasksRepository.update({
-            id: this.taskElement.id,
-            [isTitle ? 'title' : 'text']: event.srcElement.value,
-          });
+          tasksRepository.update({ id, title, text });
         }, 2000);
       },
 
@@ -53,6 +56,7 @@ export default class TaskController {
             id: this.taskElement.id,
             completed: true,
           });
+          this.taskElement.remove();
         }
         if (event.type === 'keyup') {
           this.keybordHandler(event);
