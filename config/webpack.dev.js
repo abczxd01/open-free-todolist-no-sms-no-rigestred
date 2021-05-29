@@ -4,8 +4,14 @@ const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.common.js');
 const environment = require('./environment');
 
-const { cssLoaders } = require('./util');
+const {
+  configureOutput,
+  configureCssLoaders,
+  configureCopyWebpackPlugin,
+} = require('./util');
+const path = require('path');
 
+const util = require('./util');
 const configureDevServer = () => {
   return {
     contentBase: environment.paths.output,
@@ -23,6 +29,7 @@ const configureDevServer = () => {
   };
 };
 module.exports = merge(baseConfig, {
+  output: configureOutput(false),
   devtool: 'eval-source-map',
 
   mode: 'development',
@@ -36,12 +43,10 @@ module.exports = merge(baseConfig, {
   target: 'web',
   devServer: configureDevServer(),
   module: {
-    rules: [
-      {
-        test: /\.(css|sass|scss)$/,
-        use: ['style-loader', ...cssLoaders],
-      },
-    ],
+    rules: configureCssLoaders(false),
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    configureCopyWebpackPlugin(),
+  ],
 });

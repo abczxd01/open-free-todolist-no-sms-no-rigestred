@@ -4,6 +4,7 @@ module.exports = {
   paths: {
     source: path.resolve(__dirname, '../src/'),
     output: path.resolve(__dirname, '../dist/'),
+    outputProd: path.resolve(__dirname, '../server/public'),
   },
   server: {
     host: 'localhost',

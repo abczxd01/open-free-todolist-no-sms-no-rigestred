@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const environment = require('./environment');
@@ -21,14 +20,6 @@ const htmlPluginEntries = templateFiles.map(
     })
 );
 
-const configureOutput = () => {
-  return {
-    path: environment.paths.output,
-    filename: 'assets/js/[name].js',
-    assetModuleFilename: 'asset/images/[name].[hash][ext]',
-  };
-};
-
 module.exports = {
   resolve: {
     alias: {
@@ -40,8 +31,6 @@ module.exports = {
   entry: {
     main: path.resolve(environment.paths.source, 'app', 'main.js'),
   },
-
-  output: configureOutput(),
   module: {
     rules: [
       {
@@ -61,15 +50,6 @@ module.exports = {
     ...htmlPluginEntries,
     new CleanWebpackPlugin({
       verbose: true,
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(environment.paths.source, 'images'),
-          to: path.resolve(environment.paths.output, 'assets/images'),
-          toType: 'dir',
-        },
-      ],
     }),
   ],
 };

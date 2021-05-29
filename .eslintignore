@@ -3,6 +3,7 @@ node_modules/
 /.vscode
 .vscode
 /.git
+/server/public
 webpack.config.js
 postcss.config.js
 config
