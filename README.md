@@ -6,12 +6,12 @@
 
 ```sh
 npm install
-npm run prod
 cd server/; npm install
 ```
 
 ## Usage
 ```sh
+npm run prod
 cd server/; npm run server
 ```
 Linux:
