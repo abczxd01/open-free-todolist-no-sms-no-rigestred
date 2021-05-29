@@ -11,6 +11,6 @@ if (!window.location.hash) {
 
 const createTaskBth = document.querySelector('.create-task-button');
 
-createTaskBth.addEventListener('click', (event) => {
+createTaskBth.addEventListener('click', () => {
   ViewTaskMenu();
 });

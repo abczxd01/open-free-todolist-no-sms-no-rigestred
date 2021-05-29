@@ -10,8 +10,7 @@ function headerSearch(event) {
   if (event.code.toLowerCase() === 'enter') {
     searchTask(event.target.value);
     headerItems.forEach(element => {
-      if (!element.matches('.header__search'))
-        element.classList.toggle('header__hide');
+      if (!element.matches('.header__search')) element.classList.toggle('header__hide');
     });
     headerSearchInput.remove();
     headerSearchInput.removeEventListener('keyup', headerSearch);
@@ -24,8 +23,7 @@ function searchGeneration() {
   input.classList.add('header__search-input');
   input.style.width = `${headerWrapper.offsetWidth - 66}px`;
   headerItems.forEach(element => {
-    if (!element.matches('.header__search'))
-      element.classList.toggle('header__hide');
+    if (!element.matches('.header__search')) element.classList.toggle('header__hide');
   });
   headerSearchInput = document.querySelector('.header__search-input');
   if (headerSearchInput === null) {
